@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gmail Spam Detection</title>
+</head>
+
+<body>
+
+<h2>Gmail Messages Classification</h2>
+
+<table border="1">
+<tr>
+<th>Email</th>
+<th>Result</th>
+</tr>
+
+{% for d in data %}
+<tr>
+<td>{{ d.email }}</td>
+<td>{{ d.result }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        canvas {
+            margin-top: 40px;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <!-- 📊 Stats Cards -->
+    <div class="cards">
+        <div class="card">
+            <h3>Total Users</h3>
+            <h2>{{ total_users }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Predictions</h3>
+            <h2>{{ total_predictions }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Spam Emails</h3>
+            <h2 style="color:red;">{{ spam }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Not Spam</h3>
+            <h2 style="color:green;">{{ ham }}</h2>
+        </div>
+    </div>
+
+    <!-- 📈 Chart -->
+    <canvas id="chart" width="400" height="200"></canvas>
+
+    <script>
+        var ctx = document.getElementById('chart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Spam', 'Not Spam'],
+                datasets: [{
+                    data: [{{ spam }}, {{ ham }}]
+                }]
+            }
+        });
+    </script>
+
+    <a href="/">⬅ Back</a>
+</div>
+
+</body>
+</html>

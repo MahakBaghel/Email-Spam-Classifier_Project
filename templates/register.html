@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            background:#a8e063; 
+            display:flex; 
+            justify-content:center; 
+            align-items:center; 
+            height:100vh;
+        }
+        .box { 
+            background:white; 
+            padding:30px; 
+            border-radius:10px; 
+            width:350px; 
+            text-align:center;
+        }
+        input, textarea, button { 
+            width:100%; 
+            padding:10px; 
+            margin:8px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Register</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% for msg in messages %}
+        <p style="color:red;">{{ msg }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="mobile" placeholder="Mobile Number" required>
+        <textarea name="address" placeholder="Address" required></textarea>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button>Register</button>
+    </form>
+
+    <p><a href="/login">Login</a></p>
+</div>
+
+</body>
+</html>

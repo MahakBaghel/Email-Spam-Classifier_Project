@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h2>Analytics Dashboard</h2>
+
+<canvas id="chart"></canvas>
+
+<script>
+var ctx = document.getElementById('chart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Spam', 'Not Spam'],
+        datasets: [{
+            data: [{{ spam }}, {{ ham }}]
+        }]
+    }
+});
+</script>
+
+<a href="/">Back</a>
+
+</body>
+</html>
